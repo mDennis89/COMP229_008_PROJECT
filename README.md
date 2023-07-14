@@ -1,4 +1,4 @@
-# COMP229-F2023- TEAM PROJECT
+# COMP229-S2023- TEAM PROJECT
 
 ## Welcome to the TEAM PROJECT - Product List App
 
