@@ -1,5 +1,5 @@
-# COMP229-F2019-MidTerm Test
+# COMP229-F2023- TEAM PROJECT
 
-## Welcome to the MidTerm Project - the Favourite Book List App
+## Welcome to the TEAM PROJECT - Product List App
 
 please use **`npm install`** to install project dependencies
