@@ -31,13 +31,14 @@ mongoDB.once('open', ()=> {
 // define routers
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
+let smartphones = require('../routes/smartphones');
 
 let app = express();
-let port = 9000;
+// let port = 9000;
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -54,6 +55,7 @@ app.use(express.static(path.join(__dirname, '../../client')));
 // route redirects
 app.use('/', index);
 app.use('/products', products);
+app.use('/smartphones', smartphones);
 
 
 // catch 404 and forward to error handler

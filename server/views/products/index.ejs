@@ -1,13 +1,9 @@
 <% include ../partials/header.ejs %>
 
-    <!-- MAIN CONTENT -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
           <h3>My Products </h3>
-          <!-- ------------------------ -->
-          <!-- FIX THE ADD BUTTON BELOW -->
-          <!-- ------------------------ -->
           <a href="/products/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a product</a>
           <br>
           <div class="table-responsive">
@@ -23,7 +19,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Template Row -->
                 <% for (let count = 0; count < products.length; count++) { %>
                 <tr>
                   <td><%= products[count].Brand %></td>
@@ -32,18 +27,12 @@
                   <td class="text-center"><%= products[count].Price %></td>
 
                   <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- ADD the EDIT BUTTON HERE -->
-                    <!-- ------------------------ -->
                     <a href="/products/<%= products[count]._id %>" class="btn btn-primary btn-sm">
                       <i class="fa fa-pencil-square-o"></i> Edit
                     </a>
                   </td>
 
                   <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- ADD the DELETE BUTTON HERE -->
-                    <!-- ------------------------ -->
                     <a href="/products/delete/<%= products[count]._id %>" class="btn btn-danger btn-sm">
                       <i class="fa fa-minus"></i> Delete</a>
                   </td>

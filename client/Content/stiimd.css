@@ -1,0 +1,33 @@
+/* Course name: Web Application Development
+Course code:COMP229-008
+Assignment: Group Project
+Group: 8
+Team: STIIMD
+Student ID: 301283465, 301246562
+Student Name: Melissa Jane Dennis, Sing Cheung Tin
+Date:   Jul 12, 2023 */
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./../Images/shoppingcart.jpg");
+    height: 50%;
+    width: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0 auto;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
