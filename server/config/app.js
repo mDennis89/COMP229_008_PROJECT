@@ -31,7 +31,7 @@ mongoDB.once('open', ()=> {
 // define routers
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
-let smartphones = require('../routes/smartphones');
+let list = require('../routes/list');
 
 let app = express();
 // let port = 9000;
@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, '../../client')));
 // route redirects
 app.use('/', index);
 app.use('/products', products);
-app.use('/smartphones', smartphones);
+app.use('/list', list);
 
 
 // catch 404 and forward to error handler
