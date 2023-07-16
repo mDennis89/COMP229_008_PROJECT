@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 
 // define the products model
 let product = require('../models/products');
+let user = require('../models/users');
 
 
 /* GET products List page. READ */
@@ -18,6 +19,7 @@ router.get('/', (req, res, next) => {
       res.render('products/index', {
         title: 'Products',
         products: products
+        // products: products, users: user
       });
     }
   });
@@ -65,8 +67,18 @@ router.get('/:id', (req, res, next) => {
       }
       else
       {
-          //show the edit view
-          res.render('products/details', {title: 'Edit Product', products: productToEdit })
+        user.findById(productToEdit.userId, (err, userFound) => {
+          if (err) {
+            console.log(err);
+            res.end(err);
+          } else {
+            console.log('Product:', productToEdit);
+            console.log('User:', userFound);
+            //show the edit view
+            // res.render('products/details', {title: 'Edit My Cart', products: productToEdit })
+            res.render('products/details', {title: 'Edit My Cart', products: productToEdit, users: userFound })
+          }
+        })
       }
   });
 });
@@ -115,4 +127,5 @@ router.get('/delete/:id', (req, res, next) => {
       }
   });
 });
+
 module.exports = router;

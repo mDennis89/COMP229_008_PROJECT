@@ -10,17 +10,15 @@
 let mongoose = require('mongoose');
 
 // create a model class
-let User = mongoose.Schema({
-    ID: String,
-    Password: String,
-    FirstName: String,
-    LastName: String,
-    MobilePhone: Number,
-    BillAddress: String,
-    ShippingAddress: String
+let Cart = mongoose.Schema({
+    Brand: String,
+    Model: String,
+    Specifications: String,
+    Price: Number,
+    Quantity: Number
 },
 {
-  collection: "users"
+  collection: "cart"
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Cart', Cart);

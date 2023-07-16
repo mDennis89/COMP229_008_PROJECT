@@ -1,14 +1,12 @@
-
 <% include ../partials/header.ejs %>
 
-    <!-- MAIN CONTENT -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3>Products </h3>
-          <!-- <a href="/products/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a product</a> -->
-          <!-- <form method="post" id="checkoutForm" action="/checkout"> -->
+          <h3>Checkout My Cart</h3>
+          <a href="/list" class="btn btn-primary"><i class="fa fa-plus"></i> Add a product</a>
           <br>
+          <form method="post"></form>
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
               <thead>
@@ -17,7 +15,8 @@
                   <th class="text-center">Model</th>
                   <th class="text-center">Specifications</th>
                   <th class="text-center">Price</th>
-                  <th class="text-center">Add to Cart</th>
+                  <th class="text-center">Contact Information</th>
+                  <th class="text-center"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,8 +26,16 @@
                   <td class="text-center"><%= products[count].Model %></td>
                   <td class="text-center"><%= products[count].Specifications %></td>
                   <td class="text-center"><%= products[count].Price %></td>
+
                   <td class="text-center">
-                    <input type="checkbox" name="selectedProducts" value="<%= products[count]._id %>" data-productId="<%= products[count]._id %>" class="addToCartCheckbox">
+                    <a href="/products/<%= products[count]._id %>" class="btn btn-primary btn-sm">
+                      <i class="fa fa-pencil-square-o"></i> Edit
+                    </a>
+                  </td>
+
+                  <td class="text-center">
+                    <a href="/products/delete/<%= products[count]._id %>" class="btn btn-danger btn-sm">
+                      <i class="fa fa-minus"></i> Delete</a>
                   </td>
                 </tr>
                 <% } %>
@@ -36,27 +43,15 @@
             </table>
           </div>
           <div>
-            <button id="checkoutBtn" class="btn btn-primary" type="button">Checkout</button>
-            <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Confirm Order</button>
+            <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i> Logout</a>
           </div>
-          <!-- </form> -->
-
-          <div class="col-md-offset-1 col-md-10 text-center">
+        </form>
+           <div class="col-md-offset-1 col-md-10 text-center">
             <ul class="pagination pagination-lg pager" id="myPager"></ul>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      // Event listener for the Checkout button
-      const checkoutBtn = document.getElementById('checkoutBtn');
-      checkoutBtn.addEventListener('click', () => {
-        // Submit the form when the "Checkout" button is clicked
-        document.getElementById('checkoutForm').submit();
-      });
-    </script>
-
 <% include ../partials/footer.ejs %>
-
-

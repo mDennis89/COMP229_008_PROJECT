@@ -40,6 +40,16 @@ Date:   Jul 12, 2023 -->
                 <input type="text" class="form-control" id="EmailTextField"
                 placeholder="Email Address" name="email" value="<%= users.Email %>"  required>
               </div>
+              <div class="form-group">
+                <label for="PhoneTextField">Phone Number</label>
+                <input type="text" class="form-control" id="PhoneTextField"
+                placeholder="Phone Number" name="phone" value="<%= users.PhoneNumber %>"  required>
+              </div>
+              <div class="form-group">
+                <label for="MailAddressTextField">Mail Address</label>
+                <input type="text" class="form-control" id="MailAddressTextField"
+                placeholder="Mail Address" name="mailaddress" value="<%= users.MailAddress %>"  required>
+              </div>
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/products" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </form>
