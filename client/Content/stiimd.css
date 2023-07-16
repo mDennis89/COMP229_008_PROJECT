@@ -14,8 +14,8 @@ body, html {
 
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./../Images/shoppingcart.jpg");
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,5 +29,6 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: black;
+    
 }
