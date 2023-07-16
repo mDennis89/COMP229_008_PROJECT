@@ -32,11 +32,11 @@ router.get('/add', (req, res, next) => {
 // Q.2b
 router.post('/add', (req, res, next) => {
   // get the properties and assign to newProduct
-  let { brand, model, specification, price, quantity } = req.body;
+  let { brand, model, specifications, price, quantity } = req.body;
   let newProduct = new product({
     Brand: brand,
     Model: model,
-    Specification: specification,
+    Specifications: specifications,
     Price: price,
     Quantity: quantity
   });
@@ -81,13 +81,13 @@ router.get('/:id', (req, res, next) => {
 // Q.2d
 router.post('/:id', (req, res, next) => {
   let productId = req.params.id;
-  let { brand, model, specification, price, quantity } = req.body;
+  let { brand, model, specifications, price, quantity } = req.body;
 
   // get the updated product info and then update DB
   product.findByIdAndUpdate(productId, {
     Brand: brand,
     Model: model,
-    Specification: specification,
+    Specifications: specifications,
     Price: price,
     Quantity: quantity
     })
