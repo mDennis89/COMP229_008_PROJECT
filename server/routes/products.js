@@ -3,129 +3,118 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-// define the products model
+// define the product model
 let product = require('../models/products');
-let user = require('../models/users');
-
 
 /* GET products List page. READ */
 router.get('/', (req, res, next) => {
   // find all products in the products collection
-  product.find( (err, products) => {
+  product.find((err, products) => {
     if (err) {
       return console.error(err);
     }
     else {
       res.render('products/index', {
-        title: 'Products',
+        title: 'Product Details',
         products: products
-        // products: products, users: user
       });
-    }
+    };
+  });
+});
+
+//  GET the Product Details page in order to add a new Product
+// Q.2a
+router.get('/add', (req, res, next) => {
+  res.render('products/details', { title: 'Add product', products: {} }); // assign title and empty array
+});
+
+// POST process the Product Details page and create a new Product - CREATE
+// Q.2b
+router.post('/add', (req, res, next) => {
+  // get the properties and assign to newProduct
+  let { brand, model, specification, price, quantity } = req.body;
+  let newProduct = new product({
+    Brand: brand,
+    Model: model,
+    Specification: specification,
+    Price: price,
+    Quantity: quantity
   });
 
-});
+  // debug
+  // console.log("Add debug");
+  // console.log(newProduct);
+  // res.redirect('/products');
+  // return;
 
-//  GET the Products Details page in order to add a new Product
-router.get('/add', (req, res, next) => {
-  res.render('products/details', {title: 'Add Product', products: '' })   
-});
-
-// POST process the Products Details page and create a new Product - CREATE
-router.post('/add', (req, res, next) => {
-  let newProduct = product({
-    "Brand": req.body.brand,
-    "Model": req.body.model,
-    "Specification": req.body.specification,
-    "Price": req.body.price,
-});
-
-product.create(newProduct, (err, product) =>{
-    if(err)
-    {
-        console.log(err);
-        res.end(err);
-    }
-    else
-    {
-        // refresh the Product list
-        res.redirect('/products');
-    }
-});
+  // save to DB
+  newProduct.save()
+    .then(() => {
+      res.redirect('/products');
+    })
+    .catch((err) => {
+      return console.error(err);
+    });
 });
 
 // GET the Product Details page in order to edit an existing Product
+// Q.2c
 router.get('/:id', (req, res, next) => {
+  let productId = req.params.id;
 
-  let id = req.params.id;
-
-  product.findById(id, (err, productToEdit) => {
-      if(err)
-      {
-          console.log(err);
-          res.end(err);
+  // get the product info and then redirect to details page with the data
+  product.findById(productId)
+    .exec()
+    .then((products) => {
+      if (products) {
+        res.render('products/details', { title: 'Product Update', products: products });
+      } else {
+        console.error('Product is not found.');
       }
-      else
-      {
-        user.findById(productToEdit.userId, (err, userFound) => {
-          if (err) {
-            console.log(err);
-            res.end(err);
-          } else {
-            console.log('Product:', productToEdit);
-            console.log('User:', userFound);
-            //show the edit view
-            // res.render('products/details', {title: 'Edit My Cart', products: productToEdit })
-            res.render('products/details', {title: 'Edit My Cart', products: productToEdit, users: userFound })
-          }
-        })
-      }
-  });
+    })
+    .catch((err) => {
+      console.error('Error retrieving product: ', err);
+    });
 });
 
 // POST - process the information passed from the details form and update the document
+// Q.2d
 router.post('/:id', (req, res, next) => {
-  let id = req.params.id
+  let productId = req.params.id;
+  let { brand, model, specification, price, quantity } = req.body;
 
-  let updatedProduct = product({
-      "_id": id,
-      "Brand": req.body.brand,
-      "Model": req.body.model,
-      "Specifications": req.body.specifications,
-      "Price": req.body.price,
-  });
-
-  product.updateOne({_id: id}, updatedProduct, (err) => {
-      if(err)
-      {
-          console.log(err);
-          res.end(err);
-      }
-      else
-      {
-          // refresh the Product list
-          res.redirect('/products');
-      }
-  });
-
+  // get the updated product info and then update DB
+  product.findByIdAndUpdate(productId, {
+    Brand: brand,
+    Model: model,
+    Specification: specification,
+    Price: price,
+    Quantity: quantity
+    })
+    .exec()
+    .then(() => {
+      res.redirect('/products');
+    })
+    .catch((err) => {
+      console.error('Error updating product: ', err);
+    });
 });
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
-  let id = req.params.id;
+// Q.2e
+  let productId = req.params.id;
 
-  product.remove({_id: id}, (err) => {
-      if(err)
-      {
-          console.log(err);
-          res.end(err);
-      }
-      else
-      {
-          // refresh the Product list
-          res.redirect('/products');
-      }
-  });
+  // get the ID and then delete it from the DB
+  product.findByIdAndDelete(productId)
+    .exec()
+    .then(() => {
+      res.redirect('/products');
+    })
+    .catch((err) => {
+      console.error('Error deleting product: ', err);
+    });
 });
+
 
 module.exports = router;

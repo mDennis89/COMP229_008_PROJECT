@@ -1,12 +1,3 @@
-//  Course name: Web Application Development
-//  Course code:COMP229-008
-//  Assignment: Group Project
-//  Group: 8
-//  Team: STIIMD
-//  Student ID: 301283465, 301246562
-//  Student Name: Melissa Jane Dennis, Sing Cheung Tin
-//  Date:   Jul 12, 2023
-
 // moddules for node and express
 let createError = require('http-errors');
 let express = require('express');
@@ -32,7 +23,6 @@ mongoDB.once('open', ()=> {
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
 let list = require('../routes/list');
-let checkout = require('../routes/checkout');
 
 let app = express();
 
@@ -52,7 +42,6 @@ app.use(express.static(path.join(__dirname, '../../client')));
 app.use('/', index);
 app.use('/products', products);
 app.use('/list', list);
-app.use('/checkout', checkout);
 
 
 // catch 404 and forward to error handler
