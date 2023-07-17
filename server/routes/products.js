@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 //  GET the Product Details page in order to add a new Product
 // Q.2a
 router.get('/add', (req, res, next) => {
-  res.render('products/details', { title: 'Add product', products: {} }); // assign title and empty array
+  res.render('products/details', { title: 'Product Creation', products: {} }); // assign title and empty array
 });
 
 // POST process the Product Details page and create a new Product - CREATE
