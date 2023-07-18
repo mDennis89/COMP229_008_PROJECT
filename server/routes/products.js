@@ -32,13 +32,11 @@ router.get('/', (req, res, next) => {
 });
 
 //  GET the Product Details page in order to add a new Product
-// Q.2a
 router.get('/add', (req, res, next) => {
   res.render('products/details', { title: 'Product Creation', products: {} }); // assign title and empty array
 });
 
 // POST process the Product Details page and create a new Product - CREATE
-// Q.2b
 router.post('/add', (req, res, next) => {
   // get the properties and assign to newProduct
   let { brand, model, specifications, price, quantity } = req.body;
@@ -61,7 +59,6 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Product Details page in order to edit an existing Product
-// Q.2c
 router.get('/:id', (req, res, next) => {
   let productId = req.params.id;
 
@@ -81,7 +78,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-// Q.2d
 router.post('/:id', (req, res, next) => {
   let productId = req.params.id;
   let { brand, model, specifications, price, quantity } = req.body;
@@ -105,7 +101,6 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
-// Q.2e
   let productId = req.params.id;
 
   // get the ID and then delete it from the DB
