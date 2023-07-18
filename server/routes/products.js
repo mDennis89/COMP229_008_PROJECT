@@ -102,18 +102,20 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
-// Q.2e
-  let productId = req.params.id;
+  let id = req.params.id;
 
-  // get the ID and then delete it from the DB
-  product.findByIdAndDelete(productId)
-    .exec()
-    .then(() => {
-      res.redirect('/products');
-    })
-    .catch((err) => {
-      console.error('Error deleting product: ', err);
-    });
+  product.remove({_id: id}, (err) => {
+      if(err)
+      {
+          console.log(err);
+          res.end(err);
+      }
+      else
+      {
+          // refresh the Product list
+          res.redirect('/products');
+      }
+  });
 });
 
 
