@@ -1,3 +1,12 @@
+<!-- Course name: Web Application Development
+Course code:COMP229-008
+Assignment: Group Project
+Group: 8
+Team: STIIMD
+Student ID: 301283465, 301246562
+Student Name: Melissa Jane Dennis, Sing Cheung Tin
+Date:   Jul 12, 2023 -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,15 +44,13 @@
           <li><a href="/" style="color: black;"><i class="fa fa-home fa-dark">
           </i> Home</a></li>
         <% } %>
-
-          <% if(title == "products") { %>
-          <li class="active"><a href="/products"><i class="fa fa-shopping-cart fa-dark">
-          </i> Products</a></li>
-          <% } else { %>
-            <li><a href="/products" style="color: black;"><i class="fa fa-shopping-cart fa-dark">
-            </i> My Products </a></li>
-          <% } %>
-
+        <% if(title == "products") { %>
+        <li class="active"><a href="/products"><i class="fa fa-shopping-cart fa-dark">
+        </i> Products</a></li>
+        <% } else { %>
+          <li><a href="/products" style="color: black;"><i class="fa fa-shopping-cart fa-dark">
+          </i> My Products </a></li>
+        <% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>

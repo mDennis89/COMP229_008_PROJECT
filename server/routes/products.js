@@ -1,3 +1,12 @@
+//  Course name: Web Application Development
+//  Course code:COMP229-008
+//  Assignment: Group Project
+//  Group: 8
+//  Team: STIIMD
+//  Student ID: 301283465, 301246562
+//  Student Name: Melissa Jane Dennis, Sing Cheung Tin
+//  Date:   Jul 12, 2023
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -23,13 +32,11 @@ router.get('/', (req, res, next) => {
 });
 
 //  GET the Product Details page in order to add a new Product
-// Q.2a
 router.get('/add', (req, res, next) => {
-  res.render('products/details', { title: 'Add product', products: {} }); // assign title and empty array
+  res.render('products/details', { title: 'Product Creation', products: {} }); // assign title and empty array
 });
 
 // POST process the Product Details page and create a new Product - CREATE
-// Q.2b
 router.post('/add', (req, res, next) => {
   // get the properties and assign to newProduct
   let { brand, model, specifications, price, quantity } = req.body;
@@ -40,12 +47,6 @@ router.post('/add', (req, res, next) => {
     Price: price,
     Quantity: quantity
   });
-
-  // debug
-  // console.log("Add debug");
-  // console.log(newProduct);
-  // res.redirect('/products');
-  // return;
 
   // save to DB
   newProduct.save()
@@ -58,7 +59,6 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Product Details page in order to edit an existing Product
-// Q.2c
 router.get('/:id', (req, res, next) => {
   let productId = req.params.id;
 
@@ -78,7 +78,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-// Q.2d
 router.post('/:id', (req, res, next) => {
   let productId = req.params.id;
   let { brand, model, specifications, price, quantity } = req.body;
@@ -102,7 +101,11 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
+<<<<<<< HEAD
   let id = req.params.id;
+=======
+  let productId = req.params.id;
+>>>>>>> 672b7f4b8668eff68ba0d669e141c2742f64829e
 
   product.remove({_id: id}, (err) => {
       if(err)
