@@ -15,17 +15,8 @@ let mongoose = require('mongoose');
 // define the product model
 let product = require('../models/products');
 
-// Middleware function to check if user is authenticated
-let isAuthenticated = (req, res, next) => {
-  if (req.session && req.session.authenticated) {
-    next();  // User is authenticated
-  } else {
-    res.redirect('/login');    // User is not authenticated, redirect to login page
-  }
-};
-
 /* GET products List page. READ */
-router.get('/', isAuthenticated, (req, res, next) => {
+router.get('/', (req, res, next) => {
   // find all products in the products collection
   product.find((err, products) => {
     if (err) {
@@ -46,7 +37,7 @@ router.get('/add', (req, res, next) => {
 });
 
 // POST process the Product Details page and create a new Product - CREATE
-router.post('/add', isAuthenticated, (req, res, next) => {
+router.post('/add', (req, res, next) => {
   // get the properties and assign to newProduct
   let { brand, model, specifications, price, quantity } = req.body;
   let newProduct = new product({
@@ -68,7 +59,7 @@ router.post('/add', isAuthenticated, (req, res, next) => {
 });
 
 // GET the Product Details page in order to edit an existing Product
-router.get('/:id', isAuthenticated, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   let productId = req.params.id;
 
   // get the product info and then redirect to details page with the data
@@ -87,7 +78,7 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id', isAuthenticated, (req, res, next) => {
+router.post('/:id', (req, res, next) => {
   let productId = req.params.id;
   let { brand, model, specifications, price, quantity } = req.body;
 
@@ -109,7 +100,7 @@ router.post('/:id', isAuthenticated, (req, res, next) => {
 });
 
 // GET - process the delete by user id
-router.get('/delete/:id', isAuthenticated, (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
   let id = req.params.id;
 
   product.remove({_id: id}, (err) => {

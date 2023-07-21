@@ -18,9 +18,8 @@ router.get('/', (req, res) => {
     title: 'Sign In',
     error: req.query.error === '1'
   });
-  // console.log("userRoute2.1");
 });
-// console.log("userRoute2.2");
+
 
 
 module.exports = router;

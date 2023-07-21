@@ -84,6 +84,12 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Logout route
+app.get('/logout', (req, res) => {
+  console.log("logoutRoute1");
+  req.session.authenticated = false; // Clear the authentication session
+  res.redirect('/'); // Redirect the user back to the login page
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

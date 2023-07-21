@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
     .then((user) => {          //new variable 'productList'
     console.log("userRoute41: " + userid, + password);
       if (user) {
-        res.redirect('/registered');     //if found, go to products.ejs
+        res.redirect('/registered');     //if found, go to registered.ejs
         console.log('userRoute5');
       } else {
         res.redirect('/');
