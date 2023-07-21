@@ -11,9 +11,7 @@ let express = require('express');
 let router = express.Router();
 let User = require('../models/users');
 
-console.log("userRoute11");
 router.get('/', (req, res) => {
-  console.log("userRoute21");
   res.render('user/register', {      //login.ejs
     title: 'User Registration',
   });
@@ -22,16 +20,12 @@ router.get('/', (req, res) => {
 router.post('/register', (req, res) => {
   const { userid, password, email, } = req.body;
   
-  console.log("userRoute31");
   User.findOne({ userid, password, firstname, lastname, email, phonenumber, mailaddress })
     .then((user) => {          //new variable 'productList'
-    console.log("userRoute41: " + userid, + password);
       if (user) {
         res.redirect('/registered');     //if found, go to registered.ejs
-        console.log('userRoute5');
       } else {
         res.redirect('/');
-        console.log('userRoute6');
       }
     })
     .catch((err) => {

@@ -12,19 +12,11 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-// define the products model
-// let product = require('../models/products');
-
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
-  console.log("indexRoute1");
-   // Your logic to check authentication status
-  // let authenticated = req.session.authenticated || false;
-
   res.render('content/index', {
     title: 'Home',
     products: '',
-    // authenticated: 'authenticated'
    });
 });
 

@@ -61,20 +61,15 @@ app.use('/login', login);
 app.use('/register', register);
 
 app.post('/login', (req, res) => {
-  // console.log("userRoute3");
   const { userid, password } = req.body;
-
   User.findOne({ userid, password })
     .then((user) => {
-      // console.log("userRoute4: ", user);
       
       if (user) {
-        // console.log("user found");
         // req.session.user = user;
         req.session.authenticated = true; // Set the authenticated flag in the session
         res.redirect('/products');
       } else {
-        // console.log("user not found");
         res.redirect('/login?error=1');
       }
     })
