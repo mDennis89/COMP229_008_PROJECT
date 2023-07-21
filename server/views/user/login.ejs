@@ -12,7 +12,7 @@ Date:   Jul 12, 2023 -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3>Sign In</h3>
+          <h1>Sign In</h1>
           <br>
 
           <% if (error) { %> <!-- Use the "error" variable from the template -->
@@ -21,14 +21,30 @@ Date:   Jul 12, 2023 -->
             </div>
           <% } %>
 
-          <form action="/login" method="POST">
-            <label for="userid">User ID:</label>
-            <input type="text" id="userid" name="userid" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Login</button>
-            <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i>Cancel</a>
-          </form>
+          <form method="POST" autocomplete="off">
+            <fieldset class="form-group">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control"
+                name="username" placeholder="Enter username"
+                id="username" required autofocus>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control"
+                name="password" placeholder="Enter password"
+                id="password" required>
+                or
+                <a href="/register">Register Here</a>
+            </fieldset>
+
+            <fieldset class="form-group text-right">
+  
+              <input type="submit" class="btn btn-success" value="Login">
+                <a href="/">
+                    <input type="button" class="btn btn-warning" value="Cancel">
+                </a>
+            </fieldset>
         </div>
         <div class="col-md-offset-1 col-md-10 text-center">
           <ul class="pagination pagination-lg pager" id="myPager"></ul>
