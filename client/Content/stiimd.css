@@ -29,12 +29,10 @@ body, html {
     position: absolute;
     top: -17%;
     left: 50%;
-<<<<<<< HEAD
+
     transform: translate(-50%);
     color: black;
-=======
-    transform: translate(-50%, -50%);
-    color: white;
->>>>>>> 672b7f4b8668eff68ba0d669e141c2742f64829e
+
+
     
 }
