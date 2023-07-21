@@ -101,11 +101,15 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
+<<<<<<< HEAD
 
   let id = req.params.id;
 
   let productId = req.params.id;
 
+=======
+  let id = req.params.id;
+>>>>>>> c657e18640a4af718ffe8e419546db5415ffa973
 
   product.remove({_id: id}, (err) => {
       if(err)

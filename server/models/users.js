@@ -11,13 +11,13 @@ let mongoose = require('mongoose');
 
 // create a model class
 let User = mongoose.Schema({
-    ID: String,
-    Password: String,
-    FirstName: String,
-    LastName: String,
-    Email: String,
-    PhoneNumber: Number,
-    MailAddress: String,
+    userid: String,
+    password: String,
+    firstname: String,
+    lastname: String,
+    email: String,
+    phonenumber: Number,
+    mailaddress: String
 },
 {
   collection: "users"

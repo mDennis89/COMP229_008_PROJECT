@@ -32,7 +32,6 @@ mongoDB.once('open', ()=> {
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
 let login = require('../routes/login');
-let register = require('../routes/register');
 
 let app = express();
 
@@ -58,7 +57,6 @@ app.use(session({
 app.use('/', index);
 app.use('/products', products);
 app.use('/login', login);
-app.use('/register', register);
 
 app.post('/login', (req, res) => {
   // console.log("userRoute3");
@@ -83,7 +81,6 @@ app.post('/login', (req, res) => {
       res.redirect('/');
     });
 });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
