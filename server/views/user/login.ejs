@@ -9,11 +9,11 @@ Date:   Jul 12, 2023 -->
 
 <% include ../partials/header.ejs %>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-          <h1>Sign In</h1>
-          <br>
+<div class = "container">
+  <div class="row">
+      <div class="offset-md-4 col-md-4">
+          <h1>Sign in</h1>
+          <form method="POST" autocomplete="off">
 
           <% if (error) { %> <!-- Use the "error" variable from the template -->
             <div class="alert alert-danger" role="alert">
@@ -23,10 +23,10 @@ Date:   Jul 12, 2023 -->
 
           <form method="POST" autocomplete="off">
             <fieldset class="form-group">
-                <label for="username">Username: </label>
+                <label for="username">User ID: </label>
                 <input type="text" class="form-control"
-                name="username" placeholder="Enter username"
-                id="username" required autofocus>
+                name="userid" placeholder="Enter user ID"
+                id="userid" required autofocus>
             </fieldset>
 
             <fieldset class="form-group">
@@ -39,12 +39,15 @@ Date:   Jul 12, 2023 -->
             </fieldset>
 
             <fieldset class="form-group text-right">
-  
-              <input type="submit" class="btn btn-success" value="Login">
-                <a href="/">
-                    <input type="button" class="btn btn-warning" value="Cancel">
+              <button type="submit" class="btn btn-primary" >
+                <i class="fa fa-check-square-o"></i> Login</button>
+
+                <a href="/" class="btn btn-warning">
+                  <i class="fa fa-undo"></i> Cancel
+              </button>
                 </a>
             </fieldset>
+
         </div>
         <div class="col-md-offset-1 col-md-10 text-center">
           <ul class="pagination pagination-lg pager" id="myPager"></ul>

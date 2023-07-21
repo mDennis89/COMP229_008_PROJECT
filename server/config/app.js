@@ -33,6 +33,7 @@ let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
 let login = require('../routes/login');
 let register = require('../routes/register');
+let registered= require('../routes/registered');
 
 let app = express();
 
@@ -59,6 +60,9 @@ app.use('/', index);
 app.use('/products', products);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/registered', registered);
+
+
 
 app.post('/login', (req, res) => {
   const { userid, password } = req.body;

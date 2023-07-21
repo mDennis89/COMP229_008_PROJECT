@@ -18,20 +18,29 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const { userid, password, email, } = req.body;
-  
-  User.findOne({ userid, password, firstname, lastname, email, phonenumber, mailaddress })
-    .then((user) => {          //new variable 'productList'
-      if (user) {
-        res.redirect('/registered');     //if found, go to registered.ejs
-      } else {
-        res.redirect('/');
-      }
+  const { username, password, firstname, lastname, email, phonenumber, mailaddress } = req.body;
+
+  // Create a new User object based on the User model
+  const newUser = new User({
+    username,
+    password,
+    firstname,
+    lastname,
+    email,
+    phonenumber,
+    mailaddress,
+  });
+
+  // Save the new user to the database
+  newUser.save()
+    .then(() => {
+      res.redirect('/registered'); // Redirect to the "registered" page after successful registration
     })
     .catch((err) => {
       console.error(err);
       res.redirect('/');
     });
 });
+
 
 module.exports = router;

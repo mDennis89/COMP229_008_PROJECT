@@ -31,10 +31,10 @@ Date:   Jul 12, 2023 -->
               </fieldset>
 
               <fieldset class="form-group">
-                  <label for="username">Username: </label>
+                  <label for="userid">User ID: </label>
                   <input type="text" class="form-control"
-                  name="username" placeholder="Enter username"
-                  id="username" required autofocus>
+                  name="userid" placeholder="Enter user ID"
+                  id="userid" required autofocus>
               </fieldset>
 
               <fieldset class="form-group">
@@ -51,10 +51,27 @@ Date:   Jul 12, 2023 -->
                   id="email" required>
               </fieldset>
 
+              <fieldset class="form-group">
+                <label for="phonenumber">Phone Number: </label>
+                <input type="phonenumber" class="form-control"
+                name="phonenumber" placeholder="Enter Phone Number"
+                id="phonenumber" required>
+               </fieldset>
+
+               <fieldset class="form-group">
+                <label for="mailaddress">Mail Address: </label>
+                <input type="mailaddress" class="form-control"
+                name="mailaddress" placeholder="Enter Mail Address"
+                id="mailaddress" required>
+               </fieldset>
+
               <fieldset class="form-group text-right">
-                  <input type="submit" class="btn btn-success" value="Register">
-                  <a href="/">
-                      <input type="button" class="btn btn-warning" value="Cancel">
+                <button type="submit" class="btn btn-primary" >
+                  <i class="fa fa-check-square-o"></i> Register</button>
+
+                  <a href="/" class="btn btn-warning">
+                    <i class="fa fa-undo"></i> Cancel
+                </button>
                   </a>
               </fieldset>
 
