@@ -45,11 +45,11 @@ Date:   Jul 12, 2023 -->
           <li><a href="/" style="color: black;"><i class="fa fa-home fa-dark">
           </i> Home</a></li>
         <% } %>
-
-        <% if (typeof authenticated !== 'undefined' && authenticated) { %>    <!-- hidden page requires auth-->
-          <li><a href="/products/add" style="color: black;"><i class="fa fa-shopping-cart fa-dark">
-          </i> Add Product </a></li>
+        <% if(title == "products") { %>
+        <li class="active"><a href="/products"><i class="fa fa-shopping-cart fa-dark">
+        </i> Products</a></li>
         <% } %>
+
         <% if (typeof authenticated !== 'undefined' && authenticated) { %>    <!-- hidden page requires auth-->
           <li><a href="/logout" style="color: black;"><i class="fa fa-shopping-cart fa-dark">
           </i> Sign Out </a></li>

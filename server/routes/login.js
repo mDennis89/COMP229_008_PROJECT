@@ -13,10 +13,13 @@ let router = express.Router();
 
 console.log("userRoute1");
 router.get('/', (req, res) => {
+  // Your logic to check authentication status
+  // let authenticated = req.session.authenticated || false;
   console.log("userRoute2");
   res.render('user/login', {      //login.ejs
     title: 'Sign In',
-    error: req.query.error === '1'
+    error: req.query.error === '1',
+    // authenticated: 'authenticated'
   });
 });
 

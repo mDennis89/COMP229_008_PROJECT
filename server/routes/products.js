@@ -34,7 +34,8 @@ router.get('/', isAuthenticated, (req, res, next) => {
     else {
       res.render('products/index', {
         title: 'Product Details',
-        products: products
+        products: products,
+        authenticated: 'authenticated'
       });
     };
   });
@@ -42,7 +43,11 @@ router.get('/', isAuthenticated, (req, res, next) => {
 
 //  GET the Product Details page in order to add a new Product
 router.get('/add', (req, res, next) => {
-  res.render('products/details', { title: 'Product Creation', products: {} }); // assign title and empty array
+  res.render('products/details', {
+    title: 'Product Creation',
+    products: {},
+    authenticated: 'authenticated'
+   }); // assign title and empty array
 });
 
 // POST process the Product Details page and create a new Product - CREATE
@@ -76,7 +81,11 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
     .exec()
     .then((products) => {
       if (products) {
-        res.render('products/details', { title: 'Product Update', products: products });
+        res.render('products/details', {
+          title: 'Product Update',
+          products: products,
+          authenticated: 'authenticated'
+        });
       } else {
         console.error('Product is not found.');
       }
@@ -111,9 +120,6 @@ router.post('/:id', isAuthenticated, (req, res, next) => {
 // GET - process the delete by user id
 router.get('/delete/:id', isAuthenticated, (req, res, next) => {
   let id = req.params.id;
-
-
-
 
   product.remove({_id: id}, (err) => {
       if(err)
