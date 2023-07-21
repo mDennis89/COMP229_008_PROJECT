@@ -9,17 +9,13 @@
 
 let express = require('express');
 let router = express.Router();
-// let User = require('../models/users');
 
-console.log("userRoute1");
 router.get('/', (req, res) => {
-  console.log("userRoute2");
   res.render('user/login', {      //login.ejs
     title: 'Sign In',
-    error: req.query.error === '1'
+    error: req.query.error === '1',
   });
 });
-
 
 
 module.exports = router;
