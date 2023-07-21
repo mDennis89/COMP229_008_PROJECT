@@ -28,11 +28,11 @@ mongoDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
 
+
 // define routers
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
 let login = require('../routes/login');
-let register = require('../routes/register');
 
 let app = express();
 
@@ -47,43 +47,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
 
-//sesion
-app.use(session({
-  secret: 'sessionsecretkey',
-  resave: false,
-  saveUninitialized: true
-}));
-
 // route redirects
 app.use('/', index);
 app.use('/products', products);
 app.use('/login', login);
-app.use('/register', register);
-
-app.post('/login', (req, res) => {
-  // console.log("userRoute3");
-  const { userid, password } = req.body;
-
-  User.findOne({ userid, password })
-    .then((user) => {
-      // console.log("userRoute4: ", user);
-      
-      if (user) {
-        // console.log("user found");
-        // req.session.user = user;
-        req.session.authenticated = true; // Set the authenticated flag in the session
-        res.redirect('/products');
-      } else {
-        // console.log("user not found");
-        res.redirect('/login?error=1');
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.redirect('/');
-    });
-});
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

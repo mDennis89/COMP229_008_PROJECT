@@ -28,11 +28,11 @@ mongoDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
 
+
 // define routers
 let index = require('../routes/index'); // top level routes
 let products = require('../routes/products'); // routes for products
 let login = require('../routes/login');
-let register = require('../routes/register');
 
 let app = express();
 
@@ -58,32 +58,43 @@ app.use(session({
 app.use('/', index);
 app.use('/products', products);
 app.use('/login', login);
-app.use('/register', register);
 
-app.post('/login', (req, res) => {
-  // console.log("userRoute3");
-  const { userid, password } = req.body;
+// app.use(express.urlencoded({ extended: true }));
 
-  User.findOne({ userid, password })
-    .then((user) => {
-      // console.log("userRoute4: ", user);
-      
-      if (user) {
-        // console.log("user found");
-        // req.session.user = user;
-        req.session.authenticated = true; // Set the authenticated flag in the session
-        res.redirect('/products');
-      } else {
-        // console.log("user not found");
-        res.redirect('/login?error=1');
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.redirect('/');
-    });
-});
+// Login routes
+// app.get('/login', (req, res) => {
+//   res.render('login');
+// });
 
+// app.post('/login', (req, res) => {
+//   const { userid, password } = req.body;
+
+//   User.findOne({ userid, password })
+//     .then((user) => {
+//       if (user) {
+//         console.log("user found");
+//         // req.session.user = user;
+//         req.session.authenticated = true; // Set the authenticated flag in the session
+//         res.redirect('/products');
+//       } else {
+//         console.log("user not found");
+//         res.redirect('/');
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.redirect('/');
+//     });
+// });
+
+// Middleware function to check if user is authenticated
+// const isAuthenticated = (req, res, next) => {
+//   if (req.session && req.session.authenticated) {
+//     next();  // User is authenticated
+//   } else {
+//     res.redirect('/login');    // User is not authenticated, redirect to login page
+//   }
+// };
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

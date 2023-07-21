@@ -12,21 +12,15 @@ Date:   Jul 12, 2023 -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3>Sign In</h3>
+          <h3>Register</h3>
           <br>
-
-          <% if (error) { %> <!-- Use the "error" variable from the template -->
-            <div class="alert alert-danger" role="alert">
-              Incorrect user ID or password. Please try again.
-            </div>
-          <% } %>
-
-          <form action="/login" method="POST">
-            <label for="userid">User ID:</label>
-            <input type="text" id="userid" name="userid" required><br><br>
+          <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required><br><br>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Login</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Submit</button>
+            <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i>Cancel</a>
           </form>
         </div>
         <div class="col-md-offset-1 col-md-10 text-center">
