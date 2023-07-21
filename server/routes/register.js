@@ -11,36 +11,38 @@ let express = require('express');
 let router = express.Router();
 let User = require('../models/users');
 
-router.get('/', (req, res) => {
-  res.render('user/register', {      //login.ejs
+router.get('/', (req, res, next) => {
+  res.render('user/register', {
     title: 'User Registration',
   });
 });
 
-router.post('/register', (req, res) => {
-  const { username, password, firstname, lastname, email, phonenumber, mailaddress } = req.body;
+router.post('/add', (req, res, next) => {
+  console.log('Received form data:', req.body);
+  let { userid, password, firstname, lastname, email, phonenumber, mailaddress } = req.body;
 
   // Create a new User object based on the User model
-  const newUser = new User({
-    username,
-    password,
-    firstname,
-    lastname,
-    email,
-    phonenumber,
-    mailaddress,
+  let newUser = new User({
+    Userid: userid,
+    Password: password,
+    Firstname: firstname,
+    Lastname: lastname,
+    Email: email,
+    Phonenumber: phonenumber,
+    Mailaddress: mailaddress,
   });
 
   // Save the new user to the database
   newUser.save()
     .then(() => {
-      res.redirect('/registered'); // Redirect to the "registered" page after successful registration
+      console.log('User registered successfully!');
+      res.redirect('/registered');
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Error while saving user:', err);
       res.redirect('/');
     });
 });
 
-
 module.exports = router;
+

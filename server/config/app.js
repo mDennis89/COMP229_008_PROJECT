@@ -13,8 +13,15 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+
 let session = require('express-session'); // Add the session middleware
+let passport = require('express-session');
 let User = require('../models/users');
+
+//let passportlocal = require('passport-local');
+//let localStrategy = passportLocal.Strategy;
+//let flash = require('connect-flash');
+
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
