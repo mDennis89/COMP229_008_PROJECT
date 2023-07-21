@@ -112,6 +112,9 @@ router.post('/:id', isAuthenticated, (req, res, next) => {
 router.get('/delete/:id', isAuthenticated, (req, res, next) => {
   let id = req.params.id;
 
+
+
+
   product.remove({_id: id}, (err) => {
       if(err)
       {
