@@ -70,7 +70,6 @@ app.use('/register', register);
 app.use('/registered', registered);
 
 
-
 app.post('/login', (req, res) => {
   const { userid, password } = req.body;
   User.findOne({ userid, password })
@@ -92,7 +91,6 @@ app.post('/login', (req, res) => {
 
 // Logout route
 app.get('/logout', (req, res) => {
-  console.log("logoutRoute1");
   req.session.authenticated = false; // Clear the authentication session
   res.redirect('/'); // Redirect the user back to the login page
 });
