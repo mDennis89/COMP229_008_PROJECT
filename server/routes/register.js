@@ -23,13 +23,13 @@ router.post('/add', (req, res, next) => {
 
   // Create a new User object based on the User model
   let newUser = new User({
-    Userid: userid,
-    Password: password,
-    Firstname: firstname,
-    Lastname: lastname,
-    Email: email,
-    Phonenumber: phonenumber,
-    Mailaddress: mailaddress,
+    userid: userid,
+    password: password,
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    phonenumber: phonenumber,
+    mailaddress: mailaddress,
   });
 
   // Save the new user to the database
