@@ -9,11 +9,34 @@ Date:   Jul 12, 2023 -->
 
 <% include ../partials/header.ejs %>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+<style>
+  /* Center the form container */
+  .form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+  }
+</style>
+
+</head>
+<body>
+  <h1><%= title %></h1>
+  <% if (error) { %> <!-- Use the "error" variable from the template -->
+  <div class="error-box">
+    <strong>ERROR:</strong> A user account alreadry exixts. 
+                            Please try with another one.
+  </div>
+<% } %>
 
 <div class = "container">
   <div class="row">
-      <div class="offset-md-4 col-md-4">
-          <h1>Please Register</h1>
+      <div class="form-container col-md-4">
+          <h1> Register</h1>
           <form method="POST" action="/register/add" autocomplete="off">
 
               <fieldset class="form-group">
@@ -78,9 +101,10 @@ Date:   Jul 12, 2023 -->
           </form>
       </div>
   </div>
+</div>
+</body>
 
-
-</main>
+</html>
 
 
 <% include ../partials/footer.ejs %>

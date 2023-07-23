@@ -9,17 +9,47 @@ Date:   Jul 12, 2023 -->
 
 <% include ../partials/header.ejs %>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-          <h3>Registration has done successfully</h3>
-          <br>
-          <button class="btn btn-primary" onclick="window.location.href='/login'">Sign In</button>
-        </div>
-        <div class="col-md-offset-1 col-md-10 text-center">
-          <ul class="pagination pagination-lg pager" id="myPager"></ul>
-        </div>
-      </div>
+<style>
+  /* Center the form container */
+  .form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container h3 {
+    white-space: nowrap;
+  }
+
+    .form-container .fa-circle-check {
+    font-size: 8rem; 
+  }
+ 
+
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="form-container col-md-4">
+      <!-- Check icon -->
+      <i class="fa-sharp fa-solid fa-circle-check fa-2xl" style="color: #13cd16;"></i>
+      
+      <h1 id="status">Registration successful!</h1>
+      <h3>Congratulations, your account has been successfully created.</h3>
+      <br>
+      <button class="btn btn-primary" onclick="window.location.href='/login'">Sign In</button>
     </div>
+    <div class="col-md-offset-1 col-md-10 text-center">
+      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Add this script to load Font Awesome icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 <% include ../partials/footer.ejs %>
