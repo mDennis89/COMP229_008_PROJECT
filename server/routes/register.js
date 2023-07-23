@@ -29,7 +29,7 @@ router.post('/add', (req, res, next) => {
     lastname: lastname,
     email: email,
     phonenumber: phonenumber,
-    mailaddress: mailaddress,
+    mailaddress: mailaddress
   });
 
   // Save the new user to the database
