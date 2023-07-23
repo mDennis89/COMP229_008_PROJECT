@@ -13,88 +13,80 @@ Date:   Jul 12, 2023 -->
 <html>
 <head>
   <title><%= title %></title>
-<!-- <style>
-  /* Center the form container */
-  .form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);    
-  }
-</style> -->
 
 </head>
+
 <body>
   <h1><%= title %></h1>
   <% if (error) { %> <!-- Use the "error" variable from the template -->
-  <div class="error-box">
-    <strong>ERROR:</strong> A user account alreadry exixts. 
-                            Please try with another one.
-  </div>
-<% } %>
-
-<div class = "container">
-  <div class="row">
-      <div class="form-container col-md-4">
-          <h1> Register</h1>
-          <form method="POST" action="/register/add" autocomplete="off">
+    <script>
+        window.onload = function(){
+          alert("A user account already exists. Please try with another one.");
+      };
+    </script>
+  <% } %>
+  <div class = "container">
+    <div class="row">
+        <div class="form-container col-md-4">
+            <h1> Register</h1>
+            <form method="POST" action="/register/add" autocomplete="off">
+              <fieldset class="form-group">
+                <label for="userid">User ID: </label>
+                <input type="text" class="form-control"
+                name="userid" placeholder="Enter user ID"
+                id="userid" required autofocus>
+            </fieldset>
+            
             <fieldset class="form-group">
-              <label for="userid">User ID: </label>
-              <input type="text" class="form-control"
-              name="userid" placeholder="Enter user ID"
-              id="userid" required autofocus>
-          </fieldset>
-          
-          <fieldset class="form-group">
-              <label for="password">Password: </label>
-              <input type="password" class="form-control"
-              name="password" placeholder="Enter password"
-              id="password" required>
-          </fieldset>
-
-            <fieldset class="form-group">
-              <label for="Firstname">First Name: </label>
-              <input type="text" class="form-control"
-              name="firstname" placeholder="Enter first name"
-              id="firstname" required autofocus>
+                <label for="password">Password: </label>
+                <input type="password" class="form-control"
+                name="password" placeholder="Enter password"
+                id="password" required>
             </fieldset>
 
-            <fieldset class="form-group">
-              <label for="Lastname">Last Name: </label>
-              <input type="text" class="form-control"
-              name="lastname" placeholder="Enter last name"
-              id="lastname" required autofocus>
-            </fieldset>
-
-            <fieldset class="form-group">
-                <label for="email">Email: </label>
-                <input type="email" class="form-control"
-                name="email" placeholder="Enter Email Address"
-                id="email" required>
-            </fieldset>
-
-            <fieldset class="form-group">
-              <label for="phonenumber">Phone Number: </label>
-              <input type="phonenumber" class="form-control"
-              name="phonenumber" placeholder="Enter Phone Number"
-              id="phonenumber" required>
+              <fieldset class="form-group">
+                <label for="Firstname">First Name: </label>
+                <input type="text" class="form-control"
+                name="firstname" placeholder="Enter first name"
+                id="firstname" required autofocus>
               </fieldset>
 
-            <fieldset class="form-group">
-              <label for="mailaddress">Mail Address: </label>
-              <input type="mailaddress" class="form-control"
-              name="mailaddress" placeholder="Enter Mail Address"
-              id="mailaddress" required>
-            </fieldset>
+              <fieldset class="form-group">
+                <label for="Lastname">Last Name: </label>
+                <input type="text" class="form-control"
+                name="lastname" placeholder="Enter last name"
+                id="lastname" required autofocus>
+              </fieldset>
 
-            <fieldset class="form-group text-right">
-              <button type="submit" class="btn btn-primary" ><i class="fa fa-check-square-o"></i> Register</button>
-              <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i>Cancel</a>
-            </fieldset>
-          </form>
-      </div>
+              <fieldset class="form-group">
+                  <label for="email">Email: </label>
+                  <input type="email" class="form-control"
+                  name="email" placeholder="Enter Email Address"
+                  id="email" required>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <label for="phonenumber">Phone Number: </label>
+                <input type="phonenumber" class="form-control"
+                name="phonenumber" placeholder="Enter Phone Number"
+                id="phonenumber" required>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <label for="mailaddress">Mail Address: </label>
+                <input type="mailaddress" class="form-control"
+                name="mailaddress" placeholder="Enter Mail Address"
+                id="mailaddress" required>
+              </fieldset>
+
+              <fieldset class="form-group text-right">
+                <button type="submit" class="btn btn-primary" ><i class="fa fa-check-square-o"></i> Register</button>
+                <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i>Cancel</a>
+              </fieldset>
+            </form>
+        </div>
+    </div>
   </div>
-</div>
 </body>
 
 </html>
