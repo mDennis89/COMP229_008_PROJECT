@@ -2,7 +2,7 @@
 Course code:COMP229-008
 Assignment: Group Project
 Group: 8
-Team: STIIMD
+Team: ST || MD
 Student ID: 301283465, 301246562
 Student Name: Melissa Jane Dennis, Sing Cheung Tin
 Date:   Jul 12, 2023 */
@@ -33,4 +33,35 @@ body, html {
     transform: translate(-50%);
     color: black;
     
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: 100px;
+    text-align: center; 
+    margin-top: 50px;  
+  
+}
+
+.logo-image {
+    text-align: center; 
+    margin-top: 50px; 
+  
+}
+
+/* Center the error message box */
+    .error-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px; /* Adjust the width as needed */
+        padding: 10px;
+        background-color: #f54150; /* Adjust the background color as needed */
+        border: 1px solid #f5c6cb; /* Adjust the border color as needed */
+        border-radius: 5px;
+        text-align: center;
+        z-index:9999;
+        font-size: 24px;
+
 }

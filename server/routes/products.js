@@ -2,7 +2,7 @@
 //  Course code:COMP229-008
 //  Assignment: Group Project
 //  Group: 8
-//  Team: STIIMD
+//  Team: ST || MD
 //  Student ID: 301283465, 301246562
 //  Student Name: Melissa Jane Dennis, Sing Cheung Tin
 //  Date:   Jul 12, 2023
@@ -42,7 +42,7 @@ router.get('/', isAuthenticated, (req, res, next) => {
 });
 
 //  GET the Product Details page in order to add a new Product
-router.get('/add', (req, res, next) => {
+router.get('/add', isAuthenticated, (req, res, next) => {
   res.render('products/details', {
     title: 'Product Creation',
     products: {},
