@@ -13,7 +13,7 @@ let router = express.Router();
 router.get('/', (req, res) => {
   res.render('user/login', {      //login.ejs
     title: 'Sign In',
-    error: req.query.error === '1',
+    error: req.query.error === '1'
   });
 });
 

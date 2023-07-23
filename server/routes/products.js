@@ -42,7 +42,7 @@ router.get('/', isAuthenticated, (req, res, next) => {
 });
 
 //  GET the Product Details page in order to add a new Product
-router.get('/add', (req, res, next) => {
+router.get('/add', isAuthenticated, (req, res, next) => {
   res.render('products/details', {
     title: 'Product Creation',
     products: {},

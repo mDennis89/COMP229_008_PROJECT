@@ -16,7 +16,7 @@ let mongoose = require('mongoose');
 router.get('/', (req, res, next) => {
   res.render('content/index', {
     title: 'Home',
-    products: '',
+    products: ''
    });
 });
 

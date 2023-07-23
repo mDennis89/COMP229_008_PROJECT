@@ -22,7 +22,7 @@ router.post('/add', async (req, res, next) => { // <-- Add 'async' here
   console.log('Received form data:', req.body);
   let { userid, password, firstname, lastname, email, phonenumber, mailaddress } = req.body;
 
-  try {
+try {
     // Check if the user already exists in the database
     let existingUser = await User.findOne({ userid });
 
